@@ -5,4 +5,24 @@ public class Pizza {
 	public String code;
 	public String nom;
 	public double prix;
+	
+	/**
+	 * constructeur par defaut
+	 */
+	public Pizza(){
+		
+	}
+	/**
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 */
+	public Pizza(String code, String nom, double prix) {
+		super();
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+	}
+	
+	
 }
