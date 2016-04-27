@@ -51,17 +51,29 @@ public class PizzeriaAdminConsoleApp {
 		}while(choix != 99);
 		
 		System.out.println("Aurevoir :(");
+		sc.close();
 		
 	}
 	
+	/**
+	 * Affiche toute les pizzas
+	 * @param pizza tableau d'Object contenant les pizzas format [][3]
+	 */
 	private static void affichePizza(Object[][] pizza) {
 		for(int i = 0; i < pizza.length; i++) {
 			if( pizza[i][0] != null) {
-				System.out.println(i+"->"+pizza[i][0]+"->"+pizza[i][1]+"->"+pizza[i][2]);
+				System.out.println(i+"->"+pizza[i][0]+"->"+pizza[i][1]+"-> ("+pizza[i][2]+" €)");
 			}
 		}
 	}
 	
+	/**
+	 * Modifie une pizza
+	 * @param pizza tableau d'Object correspondant a nos pizza
+	 * @param numCase Int correspondant a l'identifiant
+	 * @param sc Scanner pour la communication
+	 * @return le tableau d'Object
+	 */
 	private static Object[][] changePizza(Object[][] pizza, int numCase, Scanner sc){
 		System.out.println("Veuillez saisir le code");
 		pizza[numCase][0] = sc.next();
@@ -73,6 +85,11 @@ public class PizzeriaAdminConsoleApp {
 		return pizza;
 	}
 	
+	/**
+	 * récupère l'id de la première place libre dans le tableau donnée en parametre
+	 * @param pizza tableau d'Object
+	 * @return l'id de la première place libre
+	 */
 	private static int getNextInsert(Object[][] pizza) {
 		int i = 0;
 		while(i < pizza.length && pizza[i][0] != null) {
@@ -81,6 +98,10 @@ public class PizzeriaAdminConsoleApp {
 		return i;
 	}
 
+	/**
+	 * crée et remplie le tableau de pizza
+	 * @return Object correspondant au tableau de pizza
+	 */
 	private static Object[][] getTableauPizza() {
 		Object[][] pizza = new Object[100][3];
 		pizza[0] = new Object[]{"PEP","Pépéroni",12.50};
