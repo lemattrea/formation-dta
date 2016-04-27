@@ -10,7 +10,7 @@ public class Pizza {
 	 * constructeur par defaut
 	 */
 	public Pizza(){
-		
+		this("PIP","marga",12.5);
 	}
 	/**
 	 * @param code
