@@ -2,6 +2,7 @@ package fr.pizzeria.ihm.menu.option;
 
 import java.util.Scanner;
 
+import fr.pizza.exception.DaoException;
 import fr.pizza.exception.UpdatePizzaException;
 import fr.pizzeria.doa.IPizzaDao;
 import fr.pizzeria.model.Pizza;
@@ -39,8 +40,8 @@ public class MajPizzaOptionMenu extends AbstractOptionMenu {
 			try{
 				pizzaDao.updatePizza(numPizza, piz);
 				System.out.println("Pizza mise à jour");
-			}catch(UpdatePizzaException e){
-				System.out.println(e.getMessage());
+			}catch(DaoException e){
+				System.err.println(e.getMessage());
 			}
 			
 		}

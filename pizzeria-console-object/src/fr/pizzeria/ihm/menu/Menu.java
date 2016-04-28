@@ -1,5 +1,6 @@
 package fr.pizzeria.ihm.menu;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import fr.pizzeria.doa.IPizzaDao;
@@ -34,8 +35,12 @@ public class Menu {
 				AbstractOptionMenu obs = options[i];
 				System.out.println(i+". "+ obs.getLibelle());
 			}
-			int saisie = sc.nextInt();
-			continuer = options[saisie].execute();
+			try{
+				int saisie = sc.nextInt();
+				continuer = options[saisie].execute();
+			}catch(InputMismatchException e){
+				System.err.println("Vous avez saisie une valeur incorect :"+sc.next());
+			}
 		}
 	}
 }

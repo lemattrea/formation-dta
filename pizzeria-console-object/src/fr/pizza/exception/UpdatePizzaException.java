@@ -1,6 +1,6 @@
 package fr.pizza.exception;
 
-public class UpdatePizzaException extends RuntimeException{
+public class UpdatePizzaException extends DaoException{
 
 	/**
 	 * @param message

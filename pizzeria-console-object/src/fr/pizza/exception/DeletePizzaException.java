@@ -1,6 +1,6 @@
 package fr.pizza.exception;
 
-public class DeletePizzaException extends RuntimeException {
+public class DeletePizzaException extends DaoException {
 
 	public DeletePizzaException() {
 		// TODO Auto-generated constructor stub

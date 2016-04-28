@@ -2,6 +2,7 @@ package fr.pizzeria.ihm.menu.option;
 
 import java.util.Scanner;
 
+import fr.pizza.exception.DaoException;
 import fr.pizza.exception.SavePizzaException;
 import fr.pizzeria.doa.IPizzaDao;
 import fr.pizzeria.doa.PizzaDaoImpl;
@@ -29,8 +30,8 @@ public class NouvellePizzaOptionMenu extends AbstractOptionMenu {
 		try{
 			pizzaDao.saveNewPizza(piz);
 			System.out.println("Pizza crée");
-		}catch(SavePizzaException e){
-			System.out.println(e.getMessage());
+		}catch(DaoException e){
+			System.err.println(e.getMessage());
 		}
 		return true;
 	}
