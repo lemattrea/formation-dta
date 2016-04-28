@@ -34,4 +34,4 @@ Le menu affiché
 3. Supprimer une Pizza
 4. Quitter
 ```
-Les sources sont dans le répertoire [pizzeria-console-objet](pizzeria-console-objet)
+Les sources sont dans le répertoire [pizzeria-console-object](pizzeria-console-objet)
