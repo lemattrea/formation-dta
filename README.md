@@ -17,7 +17,7 @@ Le menu affiché
 
 L'application est basée sur une **approche procédurale de la programmatio**n.
 
-Les sources sont dans le répertoire pizzeria-console-imperative
+Les sources sont dans le répertoire [pizzeria-console-imperative](pizzeria-console-imperative)
 
 ##pizzeria-console-objet
 
@@ -34,4 +34,4 @@ Le menu affiché
 3. Supprimer une Pizza
 4. Quitter
 ```
-Les sources sont dans le répertoire pizzeria-console-objet
+Les sources sont dans le répertoire [pizzeria-console-objet](pizzeria-console-objet)
