@@ -1,5 +1,8 @@
 package fr.pizzeria.doa;
 
+import fr.pizza.exception.DeletePizzaException;
+import fr.pizza.exception.SavePizzaException;
+import fr.pizza.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoImpl implements IPizzaDao {
@@ -24,7 +27,7 @@ public class PizzaDaoImpl implements IPizzaDao {
 	}
 
 	@Override
-	public boolean saveNewPizza(Pizza newPizza) {
+	public void saveNewPizza(Pizza newPizza) {
 		int codePiz = 0;
 		boolean trouver = false;
 		while(!trouver && codePiz < pizzas.length){
@@ -34,11 +37,13 @@ public class PizzaDaoImpl implements IPizzaDao {
 			}
 			codePiz++;
 		}
-		return trouver;
+		if (trouver == false){
+			throw new SavePizzaException("Problème lors de la création de la pizza");
+		}
 	}
 
 	@Override
-	public boolean updatePizza(String code, Pizza updatePizza) {
+	public void updatePizza(String code, Pizza updatePizza) {
 		int codePiz = 0;
 		boolean trouver = false;
 		while(!trouver && codePiz < pizzas.length){
@@ -48,11 +53,13 @@ public class PizzaDaoImpl implements IPizzaDao {
 			}
 			codePiz++;
 		}
-		return trouver;
+		if (trouver == false){
+			throw new UpdatePizzaException("Problème lors de la MAJ de la pizza");
+		}
 	}
 
 	@Override
-	public boolean deletePizza(String code) {
+	public void deletePizza(String code) {
 		int codePiz = 0;
 		boolean trouver = false;
 		while(!trouver && codePiz < pizzas.length){
@@ -62,7 +69,9 @@ public class PizzaDaoImpl implements IPizzaDao {
 			}
 			codePiz++;
 		}
-		return trouver;
+		if (trouver == false){
+			throw new DeletePizzaException("Problème lors de la supression de la pizza");
+		}
 	}
 
 }

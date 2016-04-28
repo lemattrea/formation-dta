@@ -2,6 +2,7 @@ package fr.pizzeria.ihm.menu.option;
 
 import java.util.Scanner;
 
+import fr.pizza.exception.UpdatePizzaException;
 import fr.pizzeria.doa.IPizzaDao;
 import fr.pizzeria.model.Pizza;
 
@@ -35,10 +36,11 @@ public class MajPizzaOptionMenu extends AbstractOptionMenu {
 			piz.setNom(sc.next());
 			System.out.println("Veuillez saisir le prix");
 			piz.setPrix(sc.nextDouble());
-			if(pizzaDao.updatePizza(numPizza, piz)){
+			try{
+				pizzaDao.updatePizza(numPizza, piz);
 				System.out.println("Pizza mise à jour");
-			}else{
-				System.err.println("Erreur lors de la mise à jour");
+			}catch(UpdatePizzaException e){
+				System.out.println(e.getMessage());
 			}
 			
 		}

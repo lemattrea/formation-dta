@@ -2,6 +2,7 @@ package fr.pizzeria.ihm.menu.option;
 
 import java.util.Scanner;
 
+import fr.pizza.exception.DeletePizzaException;
 import fr.pizzeria.doa.IPizzaDao;
 import fr.pizzeria.model.Pizza;
 
@@ -26,10 +27,11 @@ public class SupprimerPizzaOptionMenu extends AbstractOptionMenu {
 		System.out.println("Veuillez choisir la pizza à supprimer.");
 		System.out.println("(99 pour abandonner)");
 		String numberPizza = sc.next();
-		if(pizzaDao.deletePizza(numberPizza)){
+		try{
+			pizzaDao.deletePizza(numberPizza);
 			System.out.println("Pizza supprimer");
-		}else{
-			System.err.println("Erreur lors de la suppression de la pizza");
+		}catch(DeletePizzaException e){
+			System.out.println(e.getMessage());
 		}
 		return true;
 	}

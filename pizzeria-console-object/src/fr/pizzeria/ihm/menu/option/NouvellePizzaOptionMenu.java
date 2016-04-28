@@ -2,6 +2,7 @@ package fr.pizzeria.ihm.menu.option;
 
 import java.util.Scanner;
 
+import fr.pizza.exception.SavePizzaException;
 import fr.pizzeria.doa.IPizzaDao;
 import fr.pizzeria.doa.PizzaDaoImpl;
 import fr.pizzeria.model.Pizza;
@@ -25,10 +26,11 @@ public class NouvellePizzaOptionMenu extends AbstractOptionMenu {
 		piz.setNom(sc.next());
 		System.out.println("Veuillez saisir le prix");
 		piz.setPrix(sc.nextDouble());
-		if(pizzaDao.saveNewPizza(piz)){
+		try{
+			pizzaDao.saveNewPizza(piz);
 			System.out.println("Pizza crée");
-		}else{
-			System.err.println("Erreur lors de la création de la pizza");
+		}catch(SavePizzaException e){
+			System.out.println(e.getMessage());
 		}
 		return true;
 	}
