@@ -1,9 +1,12 @@
 package fr.pizzeria.model;
 
+import java.lang.reflect.Field;
 
 public class Pizza implements Comparable<Pizza>{
 	private static int nbPizzas = 0;
+	@ToString(uppercase = true)
 	private String code;
+	@ToString(uppercase = false)
 	private String nom;
 	private double prix;
 	private CategoriePizza categorie; 
@@ -58,7 +61,26 @@ public class Pizza implements Comparable<Pizza>{
 		this.prix = prix;
 	}
 	public String toString(){
-		return this.code+"->"+this.nom+"-> ("+this.prix+" €)"+"("+this.categorie.getLibelle()+")";
+		String chaine = "";
+		for(Field f : this.getClass().getDeclaredFields()) {
+			ToString annotation = f.getAnnotation(ToString.class);
+			if(annotation != null){
+				boolean uppercase = annotation.uppercase();
+				try {
+					if(f.getName() == "code" || f.getName() == "nom"){
+						chaine += uppercase ? f.get(this).toString().toUpperCase()+"->" : f.get(this)+"->";
+						
+					}else{
+						chaine += "("; 
+						chaine += uppercase ? f.get(this).toString().toUpperCase() : f.get(this);
+						chaine += ")";
+					}
+				} catch (IllegalArgumentException | IllegalAccessException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return chaine;
 	}
 	@Override
 	public int compareTo(Pizza o) {
