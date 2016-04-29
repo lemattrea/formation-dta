@@ -23,7 +23,7 @@ public class SupprimerPizzaOptionMenu extends AbstractOptionMenu {
 		Set<Pizza> pizzas = pizzaDao.findAllPizzas();
 		
 		for(Pizza p : pizzas) {
-			System.out.println(p.getCode()+"->"+p.getNom()+"-> ("+p.getPrix()+" €)");
+			System.out.println(p.toString());
 		}
 		System.out.println("Veuillez choisir la pizza à supprimer.");
 		System.out.println("(99 pour abandonner)");

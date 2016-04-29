@@ -21,7 +21,7 @@ public class ListerPizzaOptionMenu extends AbstractOptionMenu {
 		Set<Pizza> pizzas = pizzaDao.findAllPizzas();
 		
 		for(Pizza p : pizzas) {
-			System.out.println(p.getCode()+"->"+p.getNom()+"-> ("+p.getPrix()+" €)");
+			System.out.println(p.toString());
 		}
 		return true;
 	}

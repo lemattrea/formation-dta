@@ -7,6 +7,7 @@ import java.util.Set;
 import fr.pizza.exception.DaoException;
 import fr.pizza.exception.UpdatePizzaException;
 import fr.pizzeria.doa.IPizzaDao;
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class MajPizzaOptionMenu extends AbstractOptionMenu {
@@ -23,7 +24,7 @@ public class MajPizzaOptionMenu extends AbstractOptionMenu {
 		Set<Pizza> pizzas = pizzaDao.findAllPizzas();
 		
 		for(Pizza p : pizzas) {
-			System.out.println(p.getCode()+"->"+p.getNom()+"-> ("+p.getPrix()+" €)");
+			System.out.println(p.toString());
 		}
 		System.out.println("(99 pour abandonner)");
 		System.out.println("Veuillez choisir la pizza à modifier.");
@@ -37,6 +38,14 @@ public class MajPizzaOptionMenu extends AbstractOptionMenu {
 			piz.setNom(sc.next());
 			System.out.println("Veuillez saisir le prix");
 			piz.setPrix(sc.nextDouble());
+			
+			CategoriePizza[] catePizzas = CategoriePizza.values();
+			for(CategoriePizza cat : catePizzas) {
+				System.out.println(cat.ordinal()+ " -> " + cat.getLibelle());
+			}
+			int saisie = sc.nextInt();
+			piz.setCategorie(catePizzas[saisie]);
+			
 			try{
 				pizzaDao.updatePizza(numPizza, piz);
 				System.out.println("Pizza mise à jour");

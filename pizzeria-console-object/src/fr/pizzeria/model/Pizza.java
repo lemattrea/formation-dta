@@ -1,31 +1,40 @@
 package fr.pizzeria.model;
 
 import java.util.Comparator;
+import java.util.List;
 
 public class Pizza implements Comparable<Pizza>{
 	private static int nbPizzas = 0;
 	private String code;
 	private String nom;
 	private double prix;
+	private CategoriePizza categorie; 
 	
 	/**
 	 * constructeur par defaut
 	 */
 	public Pizza(){
-		this("PIP","marga",12.5);
+		this("PIP","marga",12.5, CategoriePizza.VIANDE);
 	}
 	/**
 	 * @param code
 	 * @param nom
 	 * @param prix
 	 */
-	public Pizza(String code, String nom, double prix) {
+	public Pizza(String code, String nom, double prix, CategoriePizza categ) {
 		super();
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
+		this.categorie = categ;
 	}
 	
+	public CategoriePizza getCategorie() {
+		return categorie;
+	}
+	public void setCategorie(CategoriePizza categorie) {
+		this.categorie = categorie;
+	}
 	public static int getNbPizzas() {
 		return nbPizzas;
 	}
@@ -49,6 +58,9 @@ public class Pizza implements Comparable<Pizza>{
 	}
 	public void setPrix(double prix) {
 		this.prix = prix;
+	}
+	public String toString(){
+		return this.code+"->"+this.nom+"-> ("+this.prix+" €)"+"("+this.categorie.getLibelle()+")";
 	}
 	@Override
 	public int compareTo(Pizza o) {
