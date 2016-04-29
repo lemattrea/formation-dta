@@ -8,7 +8,9 @@ public class Pizza implements Comparable<Pizza>{
 	private String code;
 	@ToString(uppercase = false)
 	private String nom;
+	@ToString(uppercase = false)
 	private double prix;
+	@ToString(uppercase = false)
 	private CategoriePizza categorie; 
 	
 	/**
@@ -68,11 +70,12 @@ public class Pizza implements Comparable<Pizza>{
 				boolean uppercase = annotation.uppercase();
 				try {
 					if(f.getName() == "code" || f.getName() == "nom"){
-						chaine += uppercase ? f.get(this).toString().toUpperCase()+"->" : f.get(this)+"->";
+						chaine += uppercase ? f.get(this).toString().toUpperCase() : f.get(this);
+						chaine += "->";
 						
 					}else{
 						chaine += "("; 
-						chaine += uppercase ? f.get(this).toString().toUpperCase() : f.get(this);
+						chaine += uppercase ? f.get(this).toString().toUpperCase() : f.get(this).toString();
 						chaine += ")";
 					}
 				} catch (IllegalArgumentException | IllegalAccessException e) {

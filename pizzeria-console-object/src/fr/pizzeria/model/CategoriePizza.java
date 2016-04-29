@@ -12,4 +12,9 @@ public enum CategoriePizza {
 	public String getLibelle() {
 		return libelle;
 	}
+	
+	@Override
+	public String toString() {
+		return libelle;
+	}
 }
