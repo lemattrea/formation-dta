@@ -1,14 +1,17 @@
 package fr.pizzeria.ihm.menu;
 
 import java.util.InputMismatchException;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 import fr.pizzeria.doa.IPizzaDao;
 import fr.pizzeria.ihm.menu.option.*;
 
 public class Menu {
 	private static final String PIZZERIA_ADMINISTRATION_LIBELLE = "Pizzeria Administration";
-	public AbstractOptionMenu[] options;
+	public Map<Integer,AbstractOptionMenu> options = new TreeMap<Integer,AbstractOptionMenu>();
 	private Scanner sc;
 
 	public Menu(Scanner sc,IPizzaDao pizzaDao) {
@@ -18,26 +21,29 @@ public class Menu {
 	}
 
 	private void initialiserOption(Scanner scanner, IPizzaDao pizzaDao) {
-		options = new AbstractOptionMenu[] { 
-				new ListerPizzaOptionMenu(pizzaDao),
-				new NouvellePizzaOptionMenu(scanner, pizzaDao),
-				new MajPizzaOptionMenu(scanner, pizzaDao),
-				new SupprimerPizzaOptionMenu(scanner, pizzaDao),
-				new QuitterOptionMenu(scanner)
-		};
+		options.put(1, new ListerPizzaOptionMenu(pizzaDao));
+		options.put(2, new NouvellePizzaOptionMenu(scanner, pizzaDao));
+		options.put(3, new MajPizzaOptionMenu(scanner, pizzaDao));
+		options.put(99, new QuitterOptionMenu(scanner));
+		options.put(4, new SupprimerPizzaOptionMenu(scanner, pizzaDao));
+		
 	}
 	
 	public void afficher() {
 		boolean continuer = true;
 		while(continuer){
 			System.out.println("***** "+PIZZERIA_ADMINISTRATION_LIBELLE+" *****");
-			for (int i = 0; i < options.length; i++) {
-				AbstractOptionMenu obs = options[i];
-				System.out.println(i+". "+ obs.getLibelle());
+			
+			for (Entry<Integer, AbstractOptionMenu> optionMenus : options.entrySet()) {
+				System.out.println(optionMenus.getKey()+". "+optionMenus.getValue().getLibelle());
 			}
 			try{
 				int saisie = sc.nextInt();
-				continuer = options[saisie].execute();
+				if(options.containsKey(saisie)){
+					continuer = options.get(saisie).execute();
+				}else{
+					System.err.println("Muméro de menu incorect");
+				}
 			}catch(InputMismatchException e){
 				System.err.println("Vous avez saisie une valeur incorect :"+sc.next());
 			}

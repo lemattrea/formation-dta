@@ -1,6 +1,8 @@
 package fr.pizzeria.model;
 
-public class Pizza {
+import java.util.Comparator;
+
+public class Pizza implements Comparable<Pizza>{
 	private static int nbPizzas = 0;
 	private String code;
 	private String nom;
@@ -47,6 +49,20 @@ public class Pizza {
 	}
 	public void setPrix(double prix) {
 		this.prix = prix;
+	}
+	@Override
+	public int compareTo(Pizza o) {
+		// TODO Auto-generated method stub
+		int resultat;
+		if(this.prix == o.prix) {
+			resultat = this.code.compareTo(o.code);
+		}else if(this.prix < o.prix){
+			resultat = -1;
+		}else{
+			resultat = 1;
+		}
+		
+		return resultat;
 	}
 	
 	

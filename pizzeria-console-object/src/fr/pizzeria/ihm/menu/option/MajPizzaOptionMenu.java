@@ -1,6 +1,8 @@
 package fr.pizzeria.ihm.menu.option;
 
+import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 import fr.pizza.exception.DaoException;
 import fr.pizza.exception.UpdatePizzaException;
@@ -18,12 +20,10 @@ public class MajPizzaOptionMenu extends AbstractOptionMenu {
 	@Override
 	public boolean execute() {
 		System.out.println("Mise à jour d’une pizza");
-		Pizza[] pizzas = pizzaDao.findAllPizzas();
+		Set<Pizza> pizzas = pizzaDao.findAllPizzas();
 		
 		for(Pizza p : pizzas) {
-			if (p != null) {
-				System.out.println(p.getCode()+"->"+p.getNom()+"-> ("+p.getPrix()+" €)");
-			}
+			System.out.println(p.getCode()+"->"+p.getNom()+"-> ("+p.getPrix()+" €)");
 		}
 		System.out.println("(99 pour abandonner)");
 		System.out.println("Veuillez choisir la pizza à modifier.");
