@@ -1,7 +1,5 @@
 package fr.pizzeria.model;
 
-import java.util.Comparator;
-import java.util.List;
 
 public class Pizza implements Comparable<Pizza>{
 	private static int nbPizzas = 0;

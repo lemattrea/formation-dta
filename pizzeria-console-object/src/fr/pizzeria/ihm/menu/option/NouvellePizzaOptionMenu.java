@@ -3,9 +3,7 @@ package fr.pizzeria.ihm.menu.option;
 import java.util.Scanner;
 
 import fr.pizza.exception.DaoException;
-import fr.pizza.exception.SavePizzaException;
 import fr.pizzeria.doa.IPizzaDao;
-import fr.pizzeria.doa.PizzaDaoImpl;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 

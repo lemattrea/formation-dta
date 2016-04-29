@@ -1,7 +1,5 @@
 package fr.pizzeria.ihm.menu.option;
 
-import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 
 import fr.pizzeria.doa.IPizzaDao;

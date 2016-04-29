@@ -2,6 +2,7 @@ package fr.pizza.exception;
 
 public class SavePizzaException extends DaoException{
 
+
 	/**
 	 * 
 	 */

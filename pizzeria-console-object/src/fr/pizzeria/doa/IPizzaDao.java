@@ -1,6 +1,5 @@
 package fr.pizzeria.doa;
 
-import java.util.List;
 import java.util.Set;
 
 import fr.pizzeria.model.Pizza;
