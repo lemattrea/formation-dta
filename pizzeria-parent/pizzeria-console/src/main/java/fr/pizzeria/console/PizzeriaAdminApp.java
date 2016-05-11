@@ -11,7 +11,6 @@ import fr.pizzeria.ihm.menu.Menu;
 public class PizzeriaAdminApp {
 
 	public static void main(String[] args) {
-		// test changement jenkins
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String confString = bundle.getString("dao.impl");
 		Integer daoImplConf = Integer.valueOf(confString);
