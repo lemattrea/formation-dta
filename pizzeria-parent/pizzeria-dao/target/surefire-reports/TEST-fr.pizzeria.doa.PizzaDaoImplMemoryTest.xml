@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="fr.pizzeria.doa.PizzaDaoImplMemoryTest" time="0.084" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="fr.pizzeria.doa.PizzaDaoImplMemoryTest" time="0.096" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_51\jre\bin"/>
@@ -61,10 +61,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="fr.pizzeria.doa.PizzaDaoImplMemoryTest" name="testSaveNewPizza" time="0.007"/>
-  <testcase classname="fr.pizzeria.doa.PizzaDaoImplMemoryTest" name="testDeletePizza" time="0.073"/>
+  <testcase classname="fr.pizzeria.doa.PizzaDaoImplMemoryTest" name="testSaveNewPizza" time="0.008"/>
+  <testcase classname="fr.pizzeria.doa.PizzaDaoImplMemoryTest" name="testDeletePizza" time="0.081"/>
   <testcase classname="fr.pizzeria.doa.PizzaDaoImplMemoryTest" name="testUpdatePizza" time="0"/>
   <testcase classname="fr.pizzeria.doa.PizzaDaoImplMemoryTest" name="testSaveNewPizzaExistante" time="0"/>
   <testcase classname="fr.pizzeria.doa.PizzaDaoImplMemoryTest" name="testDeletePizzaNonExistante" time="0"/>
-  <testcase classname="fr.pizzeria.doa.PizzaDaoImplMemoryTest" name="testFindAllPizzas" time="0.004"/>
+  <testcase classname="fr.pizzeria.doa.PizzaDaoImplMemoryTest" name="testFindAllPizzas" time="0.007"/>
 </testsuite>

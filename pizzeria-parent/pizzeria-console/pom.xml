@@ -18,6 +18,13 @@
 		<java.target>1.8</java.target>
 	</properties>
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -84,5 +91,22 @@
 			<artifactId>system-rules</artifactId>
 		</dependency>
 	</dependencies>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<dao.impl>0</dao.impl>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<dao.impl>1</dao.impl>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>
