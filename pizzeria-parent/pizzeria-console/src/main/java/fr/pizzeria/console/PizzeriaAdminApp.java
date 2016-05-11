@@ -9,11 +9,14 @@ import fr.pizzeria.doa.PizzaDaoImplMemory;
 import fr.pizzeria.ihm.menu.Menu;
 
 public class PizzeriaAdminApp {
-
+	
+	private PizzeriaAdminApp() {}
+	
 	public static void main(String[] args) {
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String confString = bundle.getString("dao.impl");
 		Integer daoImplConf = Integer.valueOf(confString);
+		
 
 		switch (daoImplConf) {
 		case 0:

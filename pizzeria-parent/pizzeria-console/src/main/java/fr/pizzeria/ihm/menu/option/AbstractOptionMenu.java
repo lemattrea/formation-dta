@@ -8,17 +8,6 @@ public abstract class AbstractOptionMenu {
 	protected Scanner sc;
 	private String libelle;
 	protected IPizzaDao pizzaDao;
-	public abstract boolean execute();
-	
-	/**
-	 * @param libelle
-	 */
-	public AbstractOptionMenu(String libelle, Scanner scanner, IPizzaDao pizzaDao) {
-		super();
-		this.pizzaDao = pizzaDao;
-		this.sc = scanner;
-		this.libelle = libelle;
-	}
 	
 	public AbstractOptionMenu(String libelle, Scanner scanner) {
 		super();
@@ -31,6 +20,18 @@ public abstract class AbstractOptionMenu {
 		this.pizzaDao = pizzaDao;
 		this.libelle = libelle;
 	}
+	
+	/**
+	 * @param libelle
+	 */
+	public AbstractOptionMenu(String libelle, Scanner scanner, IPizzaDao pizzaDao) {
+		super();
+		this.pizzaDao = pizzaDao;
+		this.sc = scanner;
+		this.libelle = libelle;
+	}
+	
+	public abstract boolean execute();
 
 	public String getLibelle() {
 		return libelle;

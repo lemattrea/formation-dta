@@ -19,6 +19,9 @@ public class Pizza implements Comparable<Pizza>{
 	@ToString(uppercase = false)
 	private CategoriePizza categorie; 
 	
+	private static final Map<String, String> FORMAT = new HashMap<>();
+	private static final String STANDART_FORMAT = "%s ->";
+	
 	/**
 	 * constructeur par defaut
 	 */
@@ -37,9 +40,6 @@ public class Pizza implements Comparable<Pizza>{
 		this.prix = prix;
 		this.categorie = categ;
 	}
-	
-	private final static Map<String, String> FORMAT = new HashMap<>();
-	private final static String STANDART_FORMAT = "%s ->";
 	
 	static {
 		FORMAT.put("nom", "%s ****");
@@ -78,6 +78,7 @@ public class Pizza implements Comparable<Pizza>{
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
+	@Override
 	public String toString(){
 		return Arrays.asList(this.getClass().getDeclaredFields()).stream()
 		.filter(f -> f.getAnnotation(ToString.class) != null)
@@ -99,7 +100,6 @@ public class Pizza implements Comparable<Pizza>{
 	
 	@Override
 	public int compareTo(Pizza o) {
-		// TODO Auto-generated method stub
 		int resultat;
 		if(this.prix == o.prix) {
 			resultat = this.code.compareTo(o.code);
