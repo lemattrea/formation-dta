@@ -12,7 +12,7 @@ public class PizzeriaAdminApp {
 
 	public static void main(String[] args) {
 
-		ResourceBundle bundle = ResourceBundle.getBundle("application");
+		ResourceBundle bundle = esourceBundle.getBundle("application");
 		String confString = bundle.getString("dao.impl");
 		Integer daoImplConf = Integer.valueOf(confString);
 
