@@ -12,6 +12,15 @@
 		<module>pizzeria-dao</module>
 		<module>pizzeria-console</module>
 	</modules>
+	<profiles>
+
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
