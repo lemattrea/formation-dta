@@ -27,6 +27,7 @@ public class Menu {
 		options.put(4, new SupprimerPizzaOptionMenu(scanner, pizzaDao));
 		options.put(5, new ListerByCategPizzaOptionMenu(pizzaDao));
 		options.put(6, new ListerBestPizzaOptionMenu(pizzaDao));
+		options.put(6, new ImportPizzaOptionMenu(pizzaDao));
 		
 	}
 	

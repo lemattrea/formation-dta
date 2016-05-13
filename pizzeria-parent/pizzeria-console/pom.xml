@@ -90,12 +90,20 @@
 			<groupId>com.github.stefanbirkner</groupId>
 			<artifactId>system-rules</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+		</dependency>
 	</dependencies>
 	<profiles>
 		<profile>
 			<id>dev</id>
 			<properties>
-				<dao.impl>0</dao.impl>
+				<dao.impl>2</dao.impl>
+				<dao.bdd.user>root</dao.bdd.user>
+				<dao.bdd.pwd></dao.bdd.pwd>
+				<dao.bdd.url>jdbc:mysql://localhost:3306/pizzeria</dao.bdd.url>
+				<dao.bdd.driver>com.mysql.jdbc.Driver</dao.bdd.driver>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>

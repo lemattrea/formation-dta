@@ -1,18 +1,20 @@
 package fr.pizzeria.doa;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
 import fr.pizzeria.exception.DeletePizzaException;
+import fr.pizzeria.exception.NotImplementException;
 import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoImplMemory implements IPizzaDao {
-	private Map<String, Pizza> pizzas = new HashMap<String, Pizza>();
+	private Map<String, Pizza> pizzas = new HashMap<>();
 	
 	public PizzaDaoImplMemory() {
 		pizzas.put("PEP",new Pizza("PEP","Pépéroni",12.50, CategoriePizza.SANS_VIANDE));
@@ -53,6 +55,14 @@ public class PizzaDaoImplMemory implements IPizzaDao {
 			throw new DeletePizzaException("Cette pizza n'existe pas");
 		}
 		pizzas.remove(code);
+	}
+
+	/**
+	 * Fonstionnalité non accessible pour cette dao
+	 */
+	@Override
+	public boolean transactionInsertPizza(List<Pizza> p) {
+		throw new NotImplementException("Veuillez configurer l'application avec une implémentation base de données");
 	}
 
 }
