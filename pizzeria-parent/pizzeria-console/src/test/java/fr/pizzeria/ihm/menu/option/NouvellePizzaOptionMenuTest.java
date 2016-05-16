@@ -6,6 +6,7 @@ import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
@@ -33,6 +34,7 @@ public class NouvellePizzaOptionMenuTest {
 	
 	@Before
 	public void setUp() throws Exception{
+		Locale.setDefault(Locale.FRENCH);
 		Scanner scanner = new Scanner(System.in);
 		pizzaDao = new PizzaDaoImplMemory();
 		optionMenu = new NouvellePizzaOptionMenu(scanner, pizzaDao);
