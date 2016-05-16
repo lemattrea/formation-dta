@@ -1,7 +1,0 @@
-fr\pizzeria\exception\UpdatePizzaException.class
-fr\pizzeria\doa\PizzaDaoImplFile.class
-fr\pizzeria\doa\PizzaDaoImplMemory.class
-fr\pizzeria\exception\DaoException.class
-fr\pizzeria\exception\SavePizzaException.class
-fr\pizzeria\doa\IPizzaDao.class
-fr\pizzeria\exception\DeletePizzaException.class
