@@ -2,10 +2,15 @@ package fr.pizzeria.console;
 
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.logging.Level;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 import fr.pizzeria.doa.IPizzaDao;
 import fr.pizzeria.doa.PizzaDaoImplBdd;
 import fr.pizzeria.doa.PizzaDaoImplFile;
+import fr.pizzeria.doa.PizzaDaoImplJpa;
 import fr.pizzeria.doa.PizzaDaoImplMemory;
 import fr.pizzeria.ihm.menu.Menu;
 
@@ -36,6 +41,12 @@ public class PizzeriaAdminApp {
 			String url = bundleJdbc.getString("dao.bdd.url");
 			String driver = bundleJdbc.getString("dao.bdd.driver");
 			lancerApplication(new PizzaDaoImplBdd(driver, url, user, password));
+			break;
+		case 3:
+			System.out.println("Mode JPA");
+			java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
+			EntityManagerFactory em = Persistence.createEntityManagerFactory("pizzeria-console");
+			lancerApplication(new PizzaDaoImplJpa(em));
 			break;
 		default:
 			System.err.println("Aucune configuration DAO trouvé");

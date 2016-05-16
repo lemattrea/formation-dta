@@ -5,22 +5,36 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+@Entity
 public class Pizza implements Comparable<Pizza>{
 	private static int nbPizzas = 0;
+
+	@Id
+	@Column(name = "id", length = 255, nullable = false, unique = true)
 	@ToString(uppercase = true)
 	private String code;
 	@ToString(uppercase = false)
 	private String nom;
 	@ToString(uppercase = false)
 	private double prix;
+	@Enumerated(EnumType.STRING)
 	@ToString(uppercase = false)
 	private CategoriePizza categorie; 
+	@Column(name = "url_image", length = 255, unique = false)
+	@ToString(uppercase = false)
+	private String url = "";
 	
 	private static final Map<String, String> FORMAT = new HashMap<>();
-	private static final String STANDART_FORMAT = "%s ->";
+	private static final String STANDART_FORMAT = "%s :";
 	
 	/**
 	 * constructeur par defaut
