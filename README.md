@@ -1,5 +1,5 @@
 #Formation DTA
-Ce dépôt contient les projets réalisés pendant la formation DTA.
+[![Build Status](http://ns377570.ip-5-196-89.eu:8080/job/Albin%20Lemattre%20-%20Pizzeria%20-%20Build/badge/icon)](http://ns377570.ip-5-196-89.eu:8080/job/Albin%20Lemattre%20-%20Pizzeria%20-%20Build/)Ce dépôt contient les projets réalisés pendant la formation DTA.
 
 ##pizzeria-console-imperative
 
