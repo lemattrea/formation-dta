@@ -40,7 +40,7 @@ public class NouvellePizzaOptionMenuTest {
 	}
 	@Test
 	public void testExecute() throws IOException {
-		systemInMock.provideLines("new", "nouvellePizz", "12.0", "0");
+		systemInMock.provideLines("new", "nouvellePizz", "12,0", "0");
 		boolean next = optionMenu.execute();
 		assertTrue(next);
 		Set<Pizza> allPizza = pizzaDao.findAllPizzas();
