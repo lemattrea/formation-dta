@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Locale;
@@ -51,7 +52,7 @@ public class NouvellePizzaOptionMenuTest {
 		Pizza pizza = findFirst.get();
 		assertEquals("new", pizza.getCode());
 		assertEquals("nouvellePizz", pizza.getNom());
-		assertTrue(12d == pizza.getPrix());
+		assertTrue(BigDecimal.valueOf(12).compareTo(pizza.getPrix()) == 0);
 		assertEquals(CategoriePizza.VIANDE, pizza.getCategorie());
 		
 		String outAttendu = Files.lines(Paths.get("src/test/resources/fr/pizzeria/ihm/menu/option/resultatNouvellePizza.txt")).collect(Collectors.joining(System.lineSeparator()));

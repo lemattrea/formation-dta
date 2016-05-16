@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
@@ -39,14 +40,14 @@ public class PizzaDaoImplMemoryTest {
 		
 		pizzaDaoRef = new PizzaDaoImplMemory();
 		pizzasRef = new TreeSet<Pizza>();
-		pizzasRef.add(new Pizza("PEP","Pépéroni",12.50, CategoriePizza.SANS_VIANDE));
-		pizzasRef.add(new Pizza("MAR","Margherita",12.50, CategoriePizza.VIANDE));
-		pizzasRef.add(new Pizza("REI","La Reine",12.50, CategoriePizza.POISSON));
-		pizzasRef.add(new Pizza("FRO","La 4 fromages",12.50, CategoriePizza.SANS_VIANDE));
-		pizzasRef.add(new Pizza("CAN","La cannibale",12.50, CategoriePizza.VIANDE));
-		pizzasRef.add(new Pizza("SAV","La savoyarde",15, CategoriePizza.SANS_VIANDE));
-		pizzasRef.add(new Pizza("ORI","L'orientale",12.50, CategoriePizza.POISSON));
-		pizzasRef.add(new Pizza("IND","L'indienne",12.50, CategoriePizza.SANS_VIANDE));
+		pizzasRef.add(new Pizza("PEP","Pépéroni",new BigDecimal("12.50"), CategoriePizza.SANS_VIANDE));
+		pizzasRef.add(new Pizza("MAR","Margherita",new BigDecimal("12.50"), CategoriePizza.VIANDE));
+		pizzasRef.add(new Pizza("REI","La Reine",new BigDecimal("12.50"), CategoriePizza.POISSON));
+		pizzasRef.add(new Pizza("FRO","La 4 fromages",new BigDecimal("12.50"), CategoriePizza.SANS_VIANDE));
+		pizzasRef.add(new Pizza("CAN","La cannibale",new BigDecimal("12.50"), CategoriePizza.VIANDE));
+		pizzasRef.add(new Pizza("SAV","La savoyarde",new BigDecimal("15"), CategoriePizza.SANS_VIANDE));
+		pizzasRef.add(new Pizza("ORI","L'orientale",new BigDecimal("12.50"), CategoriePizza.POISSON));
+		pizzasRef.add(new Pizza("IND","L'indienne",new BigDecimal("12.50"), CategoriePizza.SANS_VIANDE));
 		
 	}
 
@@ -65,7 +66,7 @@ public class PizzaDaoImplMemoryTest {
 
 	@Test
 	public void testSaveNewPizza() {
-		Pizza newPizza = new Pizza("POP", "piponi", 12, CategoriePizza.POISSON);
+		Pizza newPizza = new Pizza("POP", "piponi", new BigDecimal("12"), CategoriePizza.POISSON);
 		pizzaDaoRef.saveNewPizza(newPizza);
 		Set<Pizza> pizzaSetTest = new TreeSet<Pizza>();
 		pizzaSetTest = pizzaDaoRef.findAllPizzas();
@@ -75,7 +76,7 @@ public class PizzaDaoImplMemoryTest {
 	
 	@Test(expected = SavePizzaException.class)
 	public void testSaveNewPizzaExistante() {
-		Pizza newPizza = new Pizza("PEP","Pépéroni",12.50, CategoriePizza.SANS_VIANDE);
+		Pizza newPizza = new Pizza("PEP","Pépéroni",new BigDecimal("12.50"), CategoriePizza.SANS_VIANDE);
 		pizzasRef.add(newPizza);
 		
 		arrayPizzaRef = pizzasRef.toArray(new Pizza[0]);
@@ -85,7 +86,7 @@ public class PizzaDaoImplMemoryTest {
 
 	@Test
 	public void testUpdatePizza() {
-		Pizza pizza = new Pizza("PEP", "piponi", 12, CategoriePizza.POISSON);
+		Pizza pizza = new Pizza("PEP", "piponi", new BigDecimal("12"), CategoriePizza.POISSON);
 		pizzaDaoRef.updatePizza("PEP", pizza);
 		Set<Pizza> pizzaSetTest = new TreeSet<Pizza>();
 		pizzaSetTest = pizzaDaoRef.findAllPizzas();
@@ -94,7 +95,7 @@ public class PizzaDaoImplMemoryTest {
 		Pizza pizzaATest = findFirst.get();
 		assertEquals("PEP", pizzaATest.getCode());
 		assertEquals("piponi", pizzaATest.getNom());
-		assertTrue(12d == pizzaATest.getPrix());
+		assertTrue(BigDecimal.valueOf(12).compareTo(pizzaATest.getPrix()) == 0);
 		assertEquals(CategoriePizza.POISSON, pizzaATest.getCategorie());
 		
 	}

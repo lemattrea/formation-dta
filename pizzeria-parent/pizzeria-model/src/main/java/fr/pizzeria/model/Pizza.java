@@ -1,6 +1,8 @@
 package fr.pizzeria.model;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -25,7 +27,7 @@ public class Pizza implements Comparable<Pizza>{
 	@ToString(uppercase = false)
 	private String nom;
 	@ToString(uppercase = false)
-	private double prix;
+	private BigDecimal prix;
 	@Enumerated(EnumType.STRING)
 	@ToString(uppercase = false)
 	private CategoriePizza categorie; 
@@ -40,14 +42,14 @@ public class Pizza implements Comparable<Pizza>{
 	 * constructeur par defaut
 	 */
 	public Pizza(){
-		this("PIP","marga",12.5, CategoriePizza.VIANDE);
+		this("PIP","marga",new BigDecimal("12.5"), CategoriePizza.VIANDE);
 	}
 	/**
 	 * @param code
 	 * @param nom
 	 * @param prix
 	 */
-	public Pizza(String code, String nom, double prix, CategoriePizza categ) {
+	public Pizza(String code, String nom, BigDecimal prix, CategoriePizza categ) {
 		super();
 		this.code = code;
 		this.nom = nom;
@@ -86,10 +88,10 @@ public class Pizza implements Comparable<Pizza>{
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public double getPrix() {
+	public BigDecimal getPrix() {
 		return prix;
 	}
-	public void setPrix(double prix) {
+	public void setPrix(BigDecimal prix) {
 		this.prix = prix;
 	}
 	@Override
@@ -114,16 +116,7 @@ public class Pizza implements Comparable<Pizza>{
 	
 	@Override
 	public int compareTo(Pizza o) {
-		int resultat;
-		if(this.prix == o.prix) {
-			resultat = this.code.compareTo(o.code);
-		}else if(this.prix < o.prix){
-			resultat = -1;
-		}else{
-			resultat = 1;
-		}
-		
-		return resultat;
+		return Comparator.comparing(Pizza::getPrix).thenComparing(Pizza::getCode).compare(this, o);
 	}
 	@Override
 	public int hashCode() {

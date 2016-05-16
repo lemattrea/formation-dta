@@ -1,6 +1,7 @@
 package fr.pizzeria.doa;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.nio.file.Files;
@@ -31,7 +32,7 @@ public class PizzaDaoImplFile implements IPizzaDao {
 					line = Files.readAllLines(path).get(0);
 					String[] ligneTab = line.split(";");
 					p.setNom(ligneTab[0]);
-					p.setPrix(Double.valueOf(ligneTab[1]));
+					p.setPrix(new BigDecimal(ligneTab[1]));
 					p.setCategorie(CategoriePizza.valueOf(ligneTab[2]));
 				} catch (IOException e) {
 					e.printStackTrace();

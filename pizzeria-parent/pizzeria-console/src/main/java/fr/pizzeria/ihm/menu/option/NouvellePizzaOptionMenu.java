@@ -28,7 +28,7 @@ public class NouvellePizzaOptionMenu extends AbstractOptionMenu {
 		nom = sc.next();
 		piz.setNom(nom);
 		System.out.println("Veuillez saisir le prix");
-		piz.setPrix(sc.nextDouble());
+		piz.setPrix(sc.nextBigDecimal());
 		System.out.println("Veuillez saisir la catégorie de pizza");
 		
 		CategoriePizza[] catePizzas = CategoriePizza.values();

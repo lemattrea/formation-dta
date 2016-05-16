@@ -1,5 +1,6 @@
 package fr.pizzeria.doa;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -40,7 +41,7 @@ public class PizzaDaoImplBdd implements IPizzaDao {
 			while (resultats.next()) {
 				String id = resultats.getString("id");
 				String name = resultats.getString("nom");
-				Double price = resultats.getDouble("prix");
+				BigDecimal price = resultats.getBigDecimal("prix");
 				String categ = resultats.getString("categorie");
 				Pizza piz = new Pizza(id, name, price, CategoriePizza.valueOf(categ));
 				pizzas.add(piz);
@@ -61,7 +62,7 @@ public class PizzaDaoImplBdd implements IPizzaDao {
 
 			statement.setString(1, newPizza.getCode());
 			statement.setString(2, newPizza.getNom());
-			statement.setDouble(3, newPizza.getPrix());
+			statement.setString(3, newPizza.getPrix().toString());
 			statement.setString(4, newPizza.getCategorie().name());
 			statement.setString(5, "");
 			int resultats = statement.executeUpdate();
@@ -84,7 +85,7 @@ public class PizzaDaoImplBdd implements IPizzaDao {
 
 			statement.setString(1, updatePizza.getCode());
 			statement.setString(2, updatePizza.getNom());
-			statement.setDouble(3, updatePizza.getPrix());
+			statement.setString(3, updatePizza.getPrix().toString());
 			statement.setString(4, updatePizza.getCategorie().name());
 			statement.setString(5, code);
 			int resultats = statement.executeUpdate();
@@ -152,7 +153,7 @@ public class PizzaDaoImplBdd implements IPizzaDao {
 				statement.clearParameters();
 				statement.setString(1, pizza.getCode());
 				statement.setString(2, pizza.getNom());
-				statement.setDouble(3, pizza.getPrix());
+				statement.setString(3, pizza.getPrix().toString());
 				statement.setString(4, pizza.getCategorie().name());
 				statement.setString(5, "");
 				statement.executeUpdate();

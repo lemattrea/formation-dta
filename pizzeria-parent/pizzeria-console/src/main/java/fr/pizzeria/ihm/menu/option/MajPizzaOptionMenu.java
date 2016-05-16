@@ -36,7 +36,7 @@ public class MajPizzaOptionMenu extends AbstractOptionMenu {
 			System.out.println("Veuillez saisir le nom (sans espace)");
 			piz.setNom(sc.next());
 			System.out.println("Veuillez saisir le prix");
-			piz.setPrix(sc.nextDouble());
+			piz.setPrix(sc.nextBigDecimal());
 			
 			CategoriePizza[] catePizzas = CategoriePizza.values();
 			Arrays.asList(catePizzas).stream().forEach(cat -> System.out.println(cat.ordinal()+ " -> " + cat.getLibelle()));
