@@ -1,21 +1,16 @@
 package fr.pizzeria.doa;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
-import fr.pizzeria.exception.ConnectionBddException;
-import fr.pizzeria.exception.StatementBddException;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoImplJpa implements IPizzaDao {
@@ -59,7 +54,8 @@ public class PizzaDaoImplJpa implements IPizzaDao {
 		
 		// début de la transaction
 		trans.begin();
-		TypedQuery<Pizza> query = emCourant.createQuery("select h from Hotel h where h.code='"+code+"'", Pizza.class);
+		TypedQuery<Pizza> query = emCourant.createQuery("select h from Hotel h where h.code=:codePizza", Pizza.class);
+		query.setParameter("codePizza", code);
 
 		Pizza pizza = query.getSingleResult();
 		if (pizza != null) {
@@ -69,7 +65,7 @@ public class PizzaDaoImplJpa implements IPizzaDao {
 			newPizza.setPrix(updatePizza.getPrix());
 			emCourant.merge(newPizza);
 		}
-		// fin de la trn
+		// fin de la transaction
 		trans.commit();
 		emCourant.close();
 	}
@@ -108,8 +104,7 @@ public class PizzaDaoImplJpa implements IPizzaDao {
 			emCourant.close();
 			return true;
 
-		} catch (EntityExistsException e) {
-			trans.rollback();
+		} catch (PersistenceException | IllegalStateException e) {
 			emCourant.close();
 			return false;
 		}

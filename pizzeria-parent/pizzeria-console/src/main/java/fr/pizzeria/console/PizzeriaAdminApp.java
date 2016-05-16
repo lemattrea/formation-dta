@@ -47,6 +47,7 @@ public class PizzeriaAdminApp {
 			java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 			EntityManagerFactory em = Persistence.createEntityManagerFactory("pizzeria-console");
 			lancerApplication(new PizzaDaoImplJpa(em));
+			em.close();
 			break;
 		default:
 			System.err.println("Aucune configuration DAO trouvé");
