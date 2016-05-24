@@ -28,6 +28,7 @@
 		<system-rules.version>1.16.0</system-rules.version>
 		<java.source>1.8</java.source>
 		<java.target>1.8</java.target>
+		<servlet.version>3.1.0</servlet.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -88,6 +89,12 @@
 				<groupId>commons-codec</groupId>
 				<artifactId>commons-codec</artifactId>
 				<version>1.10</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet.version}</version>
+				<scope>provided</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
