@@ -2,7 +2,7 @@ package fr.pizzeria.ihm.menu.option;
 
 import java.util.Scanner;
 
-import fr.pizzeria.doa.IPizzaDao;
+import fr.pizzeria.doa.pizza.IPizzaDao;
 
 public abstract class AbstractOptionMenu {
 	protected Scanner sc;

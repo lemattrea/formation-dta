@@ -2,7 +2,7 @@ package fr.pizzeria.ihm.menu.option;
 
 import java.util.Set;
 
-import fr.pizzeria.doa.IPizzaDao;
+import fr.pizzeria.doa.pizza.IPizzaDao;
 import fr.pizzeria.model.Pizza;
 
 public class ListerPizzaOptionMenu extends AbstractOptionMenu {

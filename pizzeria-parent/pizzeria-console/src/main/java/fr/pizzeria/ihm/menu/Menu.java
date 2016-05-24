@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-import fr.pizzeria.doa.IPizzaDao;
+import fr.pizzeria.doa.pizza.IPizzaDao;
 import fr.pizzeria.ihm.menu.option.*;
 
 public class Menu {

@@ -19,8 +19,8 @@ import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 
-import fr.pizzeria.doa.IPizzaDao;
-import fr.pizzeria.doa.PizzaDaoImplMemory;
+import fr.pizzeria.doa.pizza.IPizzaDao;
+import fr.pizzeria.doa.pizza.PizzaDaoImplMemory;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 

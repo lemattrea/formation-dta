@@ -5,8 +5,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.apache.commons.collections4.ListUtils;
 
-import fr.pizzeria.doa.IPizzaDao;
-import fr.pizzeria.doa.PizzaDaoImplFile;
+import fr.pizzeria.doa.pizza.IPizzaDao;
+import fr.pizzeria.doa.pizza.PizzaDaoImplFile;
 import fr.pizzeria.exception.NotImplementException;
 import fr.pizzeria.model.Pizza;
 

@@ -7,11 +7,11 @@ import java.util.logging.Level;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import fr.pizzeria.doa.IPizzaDao;
-import fr.pizzeria.doa.PizzaDaoImplBdd;
-import fr.pizzeria.doa.PizzaDaoImplFile;
-import fr.pizzeria.doa.PizzaDaoImplJpa;
-import fr.pizzeria.doa.PizzaDaoImplMemory;
+import fr.pizzeria.doa.pizza.IPizzaDao;
+import fr.pizzeria.doa.pizza.PizzaDaoImplBdd;
+import fr.pizzeria.doa.pizza.PizzaDaoImplFile;
+import fr.pizzeria.doa.pizza.PizzaDaoImplJpa;
+import fr.pizzeria.doa.pizza.PizzaDaoImplMemory;
 import fr.pizzeria.ihm.menu.Menu;
 
 public class PizzeriaAdminApp {
@@ -44,7 +44,7 @@ public class PizzeriaAdminApp {
 			break;
 		case 3:
 			System.out.println("Mode JPA");
-			java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
+			java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.WARNING);
 			EntityManagerFactory em = Persistence.createEntityManagerFactory("pizzeria-console");
 			lancerApplication(new PizzaDaoImplJpa(em));
 			em.close();

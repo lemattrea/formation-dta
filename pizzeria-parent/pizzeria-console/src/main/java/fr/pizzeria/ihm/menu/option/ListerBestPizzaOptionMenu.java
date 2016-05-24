@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.Optional;
 import java.util.Set;
 
-import fr.pizzeria.doa.IPizzaDao;
+import fr.pizzeria.doa.pizza.IPizzaDao;
 import fr.pizzeria.model.Pizza;
 
 public class ListerBestPizzaOptionMenu extends AbstractOptionMenu {

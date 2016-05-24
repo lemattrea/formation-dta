@@ -1,4 +1,4 @@
-package fr.pizzeria.doa;
+package fr.pizzeria.doa.pizza;
 
 import java.math.BigDecimal;
 import java.sql.Connection;

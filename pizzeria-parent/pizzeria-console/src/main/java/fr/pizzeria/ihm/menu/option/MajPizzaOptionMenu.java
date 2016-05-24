@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Set;
 
+import fr.pizzeria.doa.pizza.IPizzaDao;
 import fr.pizzeria.exception.DaoException;
-import fr.pizzeria.doa.IPizzaDao;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
