@@ -4,4 +4,37 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
+  <servlet>
+  	<servlet-name>PizzaServletWebApi</servlet-name>
+  	<servlet-class>fr.pizzeria.admin.web.PizzaServletWebApi</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ListerPizzaController</servlet-name>
+  	<servlet-class>fr.pizzeria.admin.web.ListerPizzaController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>EditerPizzaController</servlet-name>
+  	<servlet-class>fr.pizzeria.admin.web.EditerPizzaController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>NewPizzaController</servlet-name>
+  	<servlet-class>fr.pizzeria.admin.web.NewPizzaController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PizzaServletWebApi</servlet-name>
+  	<url-pattern>/api/servlet/pizzas</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ListerPizzaController</servlet-name>
+  	<url-pattern>/pizzas/list</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EditerPizzaController</servlet-name>
+  	<url-pattern>/pizzas/edit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>NewPizzaController</servlet-name>
+  	<url-pattern>/pizzas/new</url-pattern>
+  </servlet-mapping>
 </web-app>

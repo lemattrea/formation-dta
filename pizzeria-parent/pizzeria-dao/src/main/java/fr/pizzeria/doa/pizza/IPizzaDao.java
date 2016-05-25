@@ -6,6 +6,7 @@ import java.util.Set;
 import fr.pizzeria.model.Pizza;
 
 public interface IPizzaDao {
+	IPizzaDao DEFAULT_IMPLEMENTATION = new PizzaDaoImplMemory();
 	
 	Set<Pizza> findAllPizzas();
 	void saveNewPizza(Pizza newPizza);
