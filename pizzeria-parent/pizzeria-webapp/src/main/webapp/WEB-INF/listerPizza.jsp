@@ -1,6 +1,8 @@
 <%@page import="fr.pizzeria.model.Pizza"%>
 <%@page import="java.util.TreeSet"%>
 <%@page import="java.util.Set"%>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="header.jsp"%>
 <div class="container" id="contenu">
 	<div class="jumbotron">
@@ -19,7 +21,7 @@
 		<h1>Les pizzas du moment</h1>
 	</div>
 	<div id="pizzasDuMoment">
-		<a class="btn btn-success" href="<%=request.getContextPath() %>/pizzas/new">nouvelle pizza</a>
+		<a class="btn btn-success" href="<c:url value="/pizzas/new"></c:url>">nouvelle pizza</a>
 		<table class="table table-striped" align="center" width="50%">
 			<thead>
 				<tr>
@@ -32,25 +34,20 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%
-					Set<Pizza> listPizz = (TreeSet)request.getAttribute("listePizza");
-					for (Pizza pizza : listPizz) {
-				%>
-				<tr id="tr-<%=pizza.getCode()%>">
+				<c:forEach var="pizza" items="${listePizza }">
+				<tr id="tr-${pizza.code }">
 					<!-- Code à  insérer dans le HTML pour afficher les données -->
-					<td><%=pizza.getCode()%></td>
-					<td><%=pizza.getNom()%></td>
-					<td><%=pizza.getPrix()%>&euro;</td>
-					<td><%=pizza.getCategorie()%></td>
+					<td>${pizza.code }</td>
+					<td>${pizza.nom }</td>
+					<td>${pizza.prix }&euro;</td>
+					<td>${pizza.categorie }</td>
 					<td><img src="http://placehold.it/150x150"></td>
 					<td></td>
-					<td><a class="btn btn-info" href="<%=request.getContextPath() %>/pizzas/edit?code=<%=pizza.getCode()%>">modifier</a></td>
-					<td><button id="supprimer" class="btn btn-danger supprimer" type="button" onclick="supprimer('<%=pizza.getCode()%>')">Supprimer</button></td>
+					<td><a class="btn btn-info" href="<c:url value="/pizzas/edit?code=${pizza.code}"></c:url>">modifier</a></td>
+					<td><button id="supprimer" class="btn btn-danger supprimer" type="button" onclick="supprimer('${pizza.code }')">Supprimer</button></td>
 					<!-- Fin du code à  insérer dans le HTML pour afficher les données -->
 				</tr>
-				<%
-					}
-				%>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>

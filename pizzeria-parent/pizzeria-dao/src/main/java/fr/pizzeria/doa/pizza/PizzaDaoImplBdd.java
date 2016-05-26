@@ -10,12 +10,15 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.inject.Named;
+
 import fr.pizzeria.exception.ConnectionBddException;
 import fr.pizzeria.exception.SqlBddException;
 import fr.pizzeria.exception.StatementBddException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+@Named
 public class PizzaDaoImplBdd implements IPizzaDao {
 
 	private String password;

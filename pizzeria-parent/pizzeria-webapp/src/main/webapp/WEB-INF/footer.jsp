@@ -42,6 +42,16 @@
 
 <!-- Fonctions JavaScript -->
 <script>
+	$("#deco").click(function(){
+		url = '<%=request.getContextPath() %>/login';
+		$.ajax({
+			  type: "DELETE",
+			  url: url,
+			  success: function(){
+				  $("#deco").remove();
+			  }
+		});
+	})
 	function supprimer(code_pizz){
 		url = '<%=request.getContextPath() %>/pizzas/edit?code='+code_pizz;
 		$.ajax({

@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.inject.Named;
+
 import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.NotImplementException;
 import fr.pizzeria.exception.SavePizzaException;
@@ -14,6 +16,7 @@ import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+@Named
 public class PizzaDaoImplMemory implements IPizzaDao {
 	private Map<String, Pizza> pizzas = new HashMap<>();
 	

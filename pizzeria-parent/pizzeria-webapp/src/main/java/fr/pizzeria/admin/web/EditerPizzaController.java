@@ -6,23 +6,25 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 
-import fr.pizzeria.doa.pizza.IPizzaDao;
-import fr.pizzeria.doa.pizza.PizzaDaoImplMemory;
+import fr.pizzeria.admin.metier.PizzaService;
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+@WebServlet("/pizzas/edit")
 public class EditerPizzaController extends HttpServlet {
 	
-	private IPizzaDao pizzaDao = IPizzaDao.DEFAULT_IMPLEMENTATION;
+	@Inject private PizzaService pizzaService;
 	private static final Logger LOG = Logger.getLogger(EditerPizzaController.class.toString());
 
 	@Override
@@ -34,12 +36,12 @@ public class EditerPizzaController extends HttpServlet {
 		}
 		
 		try {
-			Set<Pizza> pizzas = pizzaDao.findAllPizzas();
+			Set<Pizza> pizzas = pizzaService.findAllPizzas();
 			Optional<Pizza> pizza = pizzas.stream().filter(p -> p.getCode().equals(code)).findFirst();
-			req.setAttribute("listePizza", pizza.get());
+			req.setAttribute("pizza", pizza.get());
 			resp.setStatus(200);
 			
-			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/editerPizza.jsp");
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/editerPizza.jsp");
 			dispatcher.forward(req, resp);
 			
 		} catch (DaoException e) {
@@ -60,7 +62,7 @@ public class EditerPizzaController extends HttpServlet {
 		}else{
 			try{
 				Pizza newPizza = new Pizza(code, nom,new BigDecimal(prix), CategoriePizza.valueOf(categ));
-				pizzaDao.updatePizza(code, newPizza);
+				pizzaService.updatePizza(code, newPizza);
 				resp.setStatus(201);
 				resp.sendRedirect(req.getContextPath()+"/pizzas/list");
 			}catch(DaoException e ) {
@@ -80,7 +82,7 @@ public class EditerPizzaController extends HttpServlet {
 			resp.sendError(400, "nombre de paramètre incorrect");
 		}else{
 			try{
-				pizzaDao.deletePizza(code);
+				pizzaService.deletePizza(code);
 			}catch(DaoException e ) {
 				resp.sendError(500, "Problème lors de la création de la pizza : pizza inexistante");
 			}catch(NumberFormatException e) {

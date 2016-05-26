@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -128,12 +130,12 @@
 						<!-- Barre de navigation pour ordinateurs -->
 						<div class="collapse navbar-collapse" id="maNavBar">
 							<ul class="nav navbar-nav">
-								<li class="active"><a href="list"><span
+								<li class="active"><a href="<c:url value="/pizzas/list"></c:url>"><span
 										class="glyphicon glyphicon-home" aria-hidden="true"></span>
 										Accueil</a></li>
-								<li><a href="#"><span
+								<li><a href="<c:url value="/technique"></c:url>"><span
 										class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-										La Florentina</a></li>
+										Donnée technique</a></li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown" role="button" aria-expanded="false"><span
 										class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -158,6 +160,7 @@
 										class="glyphicon glyphicon-home" aria-hidden="true"></span>
 										Contactez-nous</a></li>
 							</ul>
+							<c:if test="${login }"><button id="deco" class="btn btn-warning pull-right" type="button">Déconnexion</button></c:if>
 						</div>
 						<!-- /.navbar-collapse -->
 					</div>

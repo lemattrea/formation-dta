@@ -2,6 +2,8 @@
 <%@page import="java.util.TreeSet"%>
 <%@page import="fr.pizzeria.model.Pizza"%>
 <%@page import="java.util.Set"%>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="header.jsp"%>
 <div class="container" id="contenu">
 	<div class="jumbotron">
@@ -20,10 +22,7 @@
 		<h1>Pizza</h1>
 	</div>
 	<div id="pizzasDuMoment">
-		<%
-			Pizza pizza = (Pizza) request.getAttribute("listePizza");
-		%>
-		<form class="form-horizontal" action="<%=request.getContextPath() %>/pizzas/new" method="post">
+		<form class="form-horizontal" action="<c:url value="/pizzas/new"></c:url>" method="post">
 			<fieldset>
 
 				<!-- Form Name -->
