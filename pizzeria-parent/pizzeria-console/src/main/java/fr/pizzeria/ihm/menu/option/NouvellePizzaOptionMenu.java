@@ -3,6 +3,7 @@ package fr.pizzeria.ihm.menu.option;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import fr.pizzeria.doa.DaoFactory;
 import fr.pizzeria.doa.pizza.IPizzaDao;
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.model.CategoriePizza;
@@ -12,12 +13,13 @@ public class NouvellePizzaOptionMenu extends AbstractOptionMenu {
 
 	private static final String NOUVELLE_PIZZA_LIBELLE = "Ajouter une nouvelle pizza";
 
-	public NouvellePizzaOptionMenu(Scanner scanner, IPizzaDao pizzaDao) {
-		super(NOUVELLE_PIZZA_LIBELLE, scanner, pizzaDao);
+	public NouvellePizzaOptionMenu(Scanner scanner, DaoFactory daoFactory) {
+		super(NOUVELLE_PIZZA_LIBELLE, scanner, daoFactory);
 	}
 
 	@Override
 	public boolean execute() {
+		IPizzaDao daoPizz = factoryDao.getPizzaDao();
 		String nom = "";
 		System.out.println("Ajout d'une nouvelle pizza");
 		
@@ -38,7 +40,7 @@ public class NouvellePizzaOptionMenu extends AbstractOptionMenu {
 		piz.setCategorie(catePizzas[saisie]);
 		
 		try{
-			pizzaDao.saveNewPizza(piz);
+			daoPizz.saveNewPizza(piz);
 			System.out.println("Pizza crée");
 		}catch(DaoException e){
 			System.err.println(e.getMessage());

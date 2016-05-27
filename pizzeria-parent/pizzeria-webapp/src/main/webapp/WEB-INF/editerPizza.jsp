@@ -57,15 +57,14 @@
 
 					</div>
 				</div>
-
 				<!-- Select Basic -->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="categorie">Categorie</label>
 					<div class="col-md-4">
 						<select id="categorie" name="categorie" class="form-control">
-							<option <c:if test="${pizza.categorie.equals(CategoriePizza.VIANDE) }">selected</c:if> value="${CategoriePizza.VIANDE }">Viande</option>
-							<option <c:if test="${pizza.categorie.equals(CategoriePizza.SANS_VIANDE) }">selected</c:if> value="${CategoriePizza.SANS_VIANDE }">Sans Viande</option>
-							<option <c:if test="${pizza.categorie.equals(CategoriePizza.POISSON) }">selected</c:if> value="${CategoriePizza.POISSON }">Poisson</option>
+							<c:forEach var="categ" items="${categories }">
+							<option <c:if test="${pizza.categorie.equals(categ)}">selected</c:if> value="${categ}">${categ.libelle}</option>
+							</c:forEach>
 						</select>
 					</div>
 				</div>

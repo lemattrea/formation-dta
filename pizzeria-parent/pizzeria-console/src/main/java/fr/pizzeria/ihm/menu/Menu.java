@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
+import fr.pizzeria.doa.DaoFactory;
 import fr.pizzeria.doa.pizza.IPizzaDao;
 import fr.pizzeria.ihm.menu.option.*;
 
@@ -13,21 +14,21 @@ public class Menu {
 	public Map<Integer,AbstractOptionMenu> options = new TreeMap<Integer,AbstractOptionMenu>();
 	private Scanner sc;
 
-	public Menu(Scanner sc,IPizzaDao pizzaDao) {
+	public Menu(Scanner sc,DaoFactory factoryDao) {
 		super();
 		this.sc = sc;
-		initialiserOption(sc, pizzaDao);
+		initialiserOption(sc, factoryDao);
 	}
 
-	private void initialiserOption(Scanner scanner, IPizzaDao pizzaDao) {
-		options.put(1, new ListerPizzaOptionMenu(pizzaDao));
-		options.put(2, new NouvellePizzaOptionMenu(scanner, pizzaDao));
-		options.put(3, new MajPizzaOptionMenu(scanner, pizzaDao));
+	private void initialiserOption(Scanner scanner, DaoFactory factoryDao) {
+		options.put(1, new ListerPizzaOptionMenu(factoryDao));
+		options.put(2, new NouvellePizzaOptionMenu(scanner, factoryDao));
+		options.put(3, new MajPizzaOptionMenu(scanner, factoryDao));
 		options.put(99, new QuitterOptionMenu(scanner));
-		options.put(4, new SupprimerPizzaOptionMenu(scanner, pizzaDao));
-		options.put(5, new ListerByCategPizzaOptionMenu(pizzaDao));
-		options.put(6, new ListerBestPizzaOptionMenu(pizzaDao));
-		options.put(6, new ImportPizzaOptionMenu(pizzaDao));
+		options.put(4, new SupprimerPizzaOptionMenu(scanner, factoryDao));
+		options.put(5, new ListerByCategPizzaOptionMenu(factoryDao));
+		options.put(6, new ListerBestPizzaOptionMenu(factoryDao));
+		options.put(6, new ImportPizzaOptionMenu(factoryDao));
 		
 	}
 	

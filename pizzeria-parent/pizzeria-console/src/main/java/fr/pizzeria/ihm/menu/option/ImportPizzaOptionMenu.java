@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.apache.commons.collections4.ListUtils;
 
+import fr.pizzeria.doa.DaoFactory;
 import fr.pizzeria.doa.pizza.IPizzaDao;
 import fr.pizzeria.doa.pizza.PizzaDaoImplFile;
 import fr.pizzeria.exception.NotImplementException;
@@ -14,8 +15,8 @@ public class ImportPizzaOptionMenu extends AbstractOptionMenu {
 
 	private static final String IMPORT_PIZZA_LIBELLE = "(Base de données) Importer les données";
 	
-	public ImportPizzaOptionMenu(IPizzaDao pizzaDao) {
-		super(IMPORT_PIZZA_LIBELLE, pizzaDao);
+	public ImportPizzaOptionMenu(DaoFactory daoFactory) {
+		super(IMPORT_PIZZA_LIBELLE, daoFactory);
 	}
 
 	@Override
@@ -23,6 +24,7 @@ public class ImportPizzaOptionMenu extends AbstractOptionMenu {
 		int compteur = 0;
 		boolean ope;
 		
+		IPizzaDao pizzaDao = factoryDao.getPizzaDao();
 		// creation d'un dao fichier pour récupérer tout les fichiers
 		IPizzaDao daoFichier = new PizzaDaoImplFile();
 		Set<Pizza> pizza = daoFichier.findAllPizzas();

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Set;
 
+import fr.pizzeria.doa.DaoFactory;
 import fr.pizzeria.doa.pizza.IPizzaDao;
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.model.CategoriePizza;
@@ -13,13 +14,14 @@ public class MajPizzaOptionMenu extends AbstractOptionMenu {
 
 	private static final String MAJ_PIZZA_LIBELLE = "Mettre � jour une pizza";
 
-	public MajPizzaOptionMenu(Scanner scanner, IPizzaDao pizzaDao) {
-		super(MAJ_PIZZA_LIBELLE, scanner, pizzaDao);
+	public MajPizzaOptionMenu(Scanner scanner, DaoFactory factoryDao) {
+		super(MAJ_PIZZA_LIBELLE, scanner, factoryDao);
 	}
 
 	@Override
 	public boolean execute() {
 		System.out.println("Mise à jour d'une pizza");
+		IPizzaDao pizzaDao = factoryDao.getPizzaDao();
 		Set<Pizza> pizzas = pizzaDao.findAllPizzas();
 		
 		pizzas.stream()

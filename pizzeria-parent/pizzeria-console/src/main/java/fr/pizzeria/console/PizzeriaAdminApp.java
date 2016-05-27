@@ -7,31 +7,32 @@ import java.util.logging.Level;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import fr.pizzeria.doa.pizza.IPizzaDao;
-import fr.pizzeria.doa.pizza.PizzaDaoImplBdd;
-import fr.pizzeria.doa.pizza.PizzaDaoImplFile;
-import fr.pizzeria.doa.pizza.PizzaDaoImplJpa;
-import fr.pizzeria.doa.pizza.PizzaDaoImplMemory;
+import fr.pizzeria.doa.DaoFactory;
+import fr.pizzeria.doa.DaoFactoryApi;
+import fr.pizzeria.doa.DaoFactoryBdd;
+import fr.pizzeria.doa.DaoFactoryFile;
+import fr.pizzeria.doa.DaoFactoryJpa;
+import fr.pizzeria.doa.DaoFactoryMemoire;
 import fr.pizzeria.ihm.menu.Menu;
 
 public class PizzeriaAdminApp {
-	
-	private PizzeriaAdminApp() {}
-	
+
+	private PizzeriaAdminApp() {
+	}
+
 	public static void main(String[] args) throws ClassNotFoundException {
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String confString = bundle.getString("dao.impl");
 		Integer daoImplConf = Integer.valueOf(confString);
-		
 
 		switch (daoImplConf) {
 		case 0:
 			System.out.println("Mode Memoire");
-			lancerApplication(new PizzaDaoImplMemory());
+			lancerApplication(new DaoFactoryMemoire());
 			break;
 		case 1:
 			System.out.println("Mode fichier");
-			lancerApplication(new PizzaDaoImplFile());
+			lancerApplication(new DaoFactoryFile());
 			break;
 		case 2:
 			System.out.println("Mode Bdd");
@@ -40,14 +41,21 @@ public class PizzeriaAdminApp {
 			String password = bundleJdbc.getString("dao.bdd.pwd");
 			String url = bundleJdbc.getString("dao.bdd.url");
 			String driver = bundleJdbc.getString("dao.bdd.driver");
-			lancerApplication(new PizzaDaoImplBdd(driver, url, user, password));
+			lancerApplication(new DaoFactoryBdd(driver, url, user, password));
 			break;
 		case 3:
 			System.out.println("Mode JPA");
 			java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.WARNING);
 			EntityManagerFactory em = Persistence.createEntityManagerFactory("pizzeria-console");
-			lancerApplication(new PizzaDaoImplJpa(em));
+			lancerApplication(new DaoFactoryJpa(em));
 			em.close();
+			break;
+		case 4:
+			System.out.println("Mode API");
+			java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.WARNING);
+			EntityManagerFactory em1 = Persistence.createEntityManagerFactory("pizzeria-console");
+			lancerApplication(new DaoFactoryApi(em1));
+			em1.close();
 			break;
 		default:
 			System.err.println("Aucune configuration DAO trouvé");
@@ -56,10 +64,11 @@ public class PizzeriaAdminApp {
 
 	}
 
-	private static void lancerApplication(IPizzaDao pizzaDao) {
+	private static void lancerApplication(DaoFactory factoryDao) {
 		Scanner sc = new Scanner(System.in);
-		Menu menu = new Menu(sc, pizzaDao);
+		Menu menu = new Menu(sc, factoryDao);
 		menu.afficher();
+		sc.close();
 	}
 
 }

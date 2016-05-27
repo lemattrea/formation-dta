@@ -2,12 +2,13 @@ package fr.pizzeria.ihm.menu.option;
 
 import java.util.Scanner;
 
+import fr.pizzeria.doa.DaoFactory;
 import fr.pizzeria.doa.pizza.IPizzaDao;
 
 public abstract class AbstractOptionMenu {
 	protected Scanner sc;
 	private String libelle;
-	protected IPizzaDao pizzaDao;
+	protected DaoFactory factoryDao;
 	
 	public AbstractOptionMenu(String libelle, Scanner scanner) {
 		super();
@@ -15,18 +16,18 @@ public abstract class AbstractOptionMenu {
 		this.libelle = libelle;
 	}
 	
-	public AbstractOptionMenu(String libelle, IPizzaDao pizzaDao) {
+	public AbstractOptionMenu(String libelle, DaoFactory factoryDao) {
 		super();
-		this.pizzaDao = pizzaDao;
+		this.factoryDao = factoryDao;
 		this.libelle = libelle;
 	}
 	
 	/**
 	 * @param libelle
 	 */
-	public AbstractOptionMenu(String libelle, Scanner scanner, IPizzaDao pizzaDao) {
+	public AbstractOptionMenu(String libelle, Scanner scanner, DaoFactory factoryDao) {
 		super();
-		this.pizzaDao = pizzaDao;
+		this.factoryDao = factoryDao;
 		this.sc = scanner;
 		this.libelle = libelle;
 	}

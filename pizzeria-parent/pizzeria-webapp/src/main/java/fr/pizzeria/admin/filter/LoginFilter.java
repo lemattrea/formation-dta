@@ -26,7 +26,7 @@ public class LoginFilter implements Filter {
 		Boolean log = (Boolean)((HttpServletRequest)request).getSession().getAttribute("login");
 		String requestURI = ((HttpServletRequest)request).getRequestURI();
 		long before = System.currentTimeMillis();
-		if(requestURI.contains("/login") || requestURI.contains("/Images") || requestURI.contains("/css") || (log != null && log)) {
+		if(requestURI.contains("/login") || requestURI.contains("/api") || requestURI.contains("/Images") || requestURI.contains("/css") || (log != null && log)) {
 			chain.doFilter(request, response);
 		}
 		else{

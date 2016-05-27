@@ -133,6 +133,9 @@
 								<li class="active"><a href="<c:url value="/pizzas/list"></c:url>"><span
 										class="glyphicon glyphicon-home" aria-hidden="true"></span>
 										Accueil</a></li>
+								<li><a href="<c:url value="/clients"></c:url>"><span
+										class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+										Client</a></li>
 								<li><a href="<c:url value="/technique"></c:url>"><span
 										class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
 										Donnée technique</a></li>
