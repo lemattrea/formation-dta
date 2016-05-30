@@ -13,7 +13,6 @@
 			<property name="javax.persistence.jdbc.user" value="${dao.bdd.user}"/>
 			<property name="javax.persistence.jdbc.password" value="${dao.bdd.pwd}"/>
 			<property name="javax.persistence.jdbc.driver" value="${dao.bdd.driver}"/>
-
 		</properties>
 	</persistence-unit>
 </persistence>

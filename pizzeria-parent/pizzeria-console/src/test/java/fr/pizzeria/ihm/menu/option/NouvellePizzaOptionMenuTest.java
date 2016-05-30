@@ -1,7 +1,8 @@
 package fr.pizzeria.ihm.menu.option;
 
-import static org.junit.Assert.*;
-import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -13,9 +14,6 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -23,9 +21,8 @@ import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 
 import fr.pizzeria.doa.DaoFactory;
-import fr.pizzeria.doa.DaoFactoryJpa;
+import fr.pizzeria.doa.DaoFactoryMemoire;
 import fr.pizzeria.doa.pizza.IPizzaDao;
-import fr.pizzeria.doa.pizza.PizzaDaoImplMemory;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -42,8 +39,7 @@ public class NouvellePizzaOptionMenuTest {
 	public void setUp() throws Exception{
 		Locale.setDefault(Locale.FRENCH);
 		Scanner scanner = new Scanner(System.in);
-		EntityManagerFactory em = Persistence.createEntityManagerFactory("pizzeria-console");
-		factoryDao = new DaoFactoryJpa(em);
+		factoryDao = new DaoFactoryMemoire();
 		optionMenu = new NouvellePizzaOptionMenu(scanner, factoryDao);
 		
 	}
