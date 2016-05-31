@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+</head>
+<body>
+<h1>test</h1>
+<script>
+	$.get('http://localhost:8080/pizzeria-webapp/api/pizzas', function(data) {
+		console.log('success', data);
+	}).fail(function(err) {
+		console.log('error', err);
+	});
+</script>
+</body>
+</html>

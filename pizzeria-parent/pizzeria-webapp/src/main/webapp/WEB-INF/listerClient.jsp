@@ -33,20 +33,20 @@
 			</thead>
 			<tbody>
 				<c:forEach var="client" items="${listeClient }">
-				<tr id="tr-${pizza.id }">
+				<tr id="tr-${client.id }">
 					<!-- Code à  insérer dans le HTML pour afficher les données -->
 					<td>${client.id }</td>
 					<td>${client.nom }</td>
 					<td>${client.prenom }</td>
 					<td>${client.email }</td>
-					<td><a class="btn btn-info" href="<c:url value="/pizzas/edit?code=${pizza.code}"></c:url>">modifier</a></td>
-					<td><button id="supprimer" class="btn btn-danger supprimer" type="button" onclick="supprimer('${pizza.code }')">Supprimer</button></td>
+					<td><a class="btn btn-info" href="">modifier</a></td>
+					<td><button id="supprimer" class="btn btn-danger supprimer" type="button" onclick="supprimerClient('${client.id }')">Supprimer</button></td>
 					<!-- Fin du code à  insérer dans le HTML pour afficher les données -->
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<form class="form-horizontal" action="<c:url value="/pizzas/new"></c:url>" method="post">
+		<form id="form-client" action="" class="form-horizontal" method="post">
 			<fieldset>
 
 				<!-- Form Name -->
@@ -56,8 +56,8 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="code">id</label>
 					<div class="col-md-4">
-						<input id="code" name="code" type="text" placeholder="code pizza"
-							class="form-control input-md" required="" disabled>
+						<input id="code" name="code" type="text"
+							class="form-control input-md" disabled>
 
 					</div>
 				</div>
@@ -66,8 +66,8 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="nom">Nom</label>
 					<div class="col-md-4">
-						<input id="nom" name="nom" type="text" placeholder="nom pizza"
-							class="form-control input-md" required="">
+						<input id="nom" name="nom" type="text" placeholder="Nom utilisateur"
+							class="form-control input-md" required>
 
 					</div>
 				</div>
@@ -76,8 +76,8 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="prenom">Pr&eacute;nom</label>
 					<div class="col-md-4">
-						<input id="prix" name="prix" type="text" placeholder="prix pizza"
-							class="form-control input-md" required="">
+						<input id="prenom" name="prenom" type="text" placeholder="Prénom utilisateur"
+							class="form-control input-md" required>
 					</div>
 				</div>
 
@@ -85,8 +85,8 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="email">Email</label>
 					<div class="col-md-4">
-						<input id="prix" name="email" type="text" placeholder="prix pizza"
-							class="form-control input-md" required="">
+						<input id="email" name="email" type="text" placeholder="Email utilisateur"
+							class="form-control input-md" required>
 					</div>
 				</div>
 
@@ -102,7 +102,32 @@
 		</form>
 	</div>
 	
-
+	<script type="text/javascript">
+		function supprimerClient(code){
+			url = '<%=request.getContextPath() %>/clients/'+code;
+			$.ajax({
+				  type: "DELETE",
+				  url: url,
+				  success: function(){
+					  $("#tr-"+code).remove();
+				  }
+			});
+		}
+		$( "#form-client").submit(function( event ) {
+			event.preventDefault();
+			var jSon = '{';
+			jSon += '"nom":"'+$("#nom").val()+'",';
+			jSon += '"prenom":"'+$("#prenom").val()+'",';
+			jSon += '"email":"'+$("#email").val()+'",';
+			alert( $("#nom").val() );
+		});
+		{
+		    "code": "PIP",
+		    "nom": "La Reine",
+		    "prix": 12.1,
+		    "categorie": "VIANDE"
+		  }
+	</script>
 </div>
 
 </div>

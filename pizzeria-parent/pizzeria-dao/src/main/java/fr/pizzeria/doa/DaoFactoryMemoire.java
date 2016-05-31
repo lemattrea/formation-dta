@@ -5,17 +5,17 @@ import org.apache.commons.lang3.NotImplementedException;
 import fr.pizzeria.doa.client.IClientDao;
 import fr.pizzeria.doa.commande.ICommandeDao;
 import fr.pizzeria.doa.pizza.IPizzaDao;
+import fr.pizzeria.doa.pizza.PizzaDaoImplMemory;
 
 public class DaoFactoryMemoire implements DaoFactory {
 
 	private IPizzaDao pizzaDao;
-	private IClientDao clientDao;
 	
 	/**
 	 * 
 	 */
 	public DaoFactoryMemoire() {
-		throw new NotImplementedException("fonction non implémenté");
+		this.pizzaDao = new PizzaDaoImplMemory();
 	}
 
 	@Override
@@ -25,12 +25,12 @@ public class DaoFactoryMemoire implements DaoFactory {
 
 	@Override
 	public IClientDao getClientDao() {
-		return clientDao;
+		throw new NotImplementedException("fonction non implémenté");
 	}
 
 	@Override
 	public ICommandeDao getCommandeDao() {
-		return null;
+		throw new NotImplementedException("fonction non implémenté");
 	}
 
 }

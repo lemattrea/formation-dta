@@ -6,8 +6,15 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 import fr.pizzeria.doa.DaoFactory;
-import fr.pizzeria.doa.pizza.IPizzaDao;
-import fr.pizzeria.ihm.menu.option.*;
+import fr.pizzeria.ihm.menu.option.AbstractOptionMenu;
+import fr.pizzeria.ihm.menu.option.ImportPizzaOptionMenu;
+import fr.pizzeria.ihm.menu.option.ListerBestPizzaOptionMenu;
+import fr.pizzeria.ihm.menu.option.ListerByCategPizzaOptionMenu;
+import fr.pizzeria.ihm.menu.option.ListerPizzaOptionMenu;
+import fr.pizzeria.ihm.menu.option.MajPizzaOptionMenu;
+import fr.pizzeria.ihm.menu.option.NouvellePizzaOptionMenu;
+import fr.pizzeria.ihm.menu.option.QuitterOptionMenu;
+import fr.pizzeria.ihm.menu.option.SupprimerPizzaOptionMenu;
 
 public class Menu {
 	private static final String PIZZERIA_ADMINISTRATION_LIBELLE = "Pizzeria Administration";

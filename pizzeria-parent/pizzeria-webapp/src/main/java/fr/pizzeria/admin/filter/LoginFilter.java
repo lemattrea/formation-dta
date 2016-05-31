@@ -1,8 +1,6 @@
 package fr.pizzeria.admin.filter;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -11,8 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @WebFilter(urlPatterns = { "/*" })
 public class LoginFilter implements Filter {
@@ -22,13 +18,13 @@ public class LoginFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
+			throws IOException, ServletException {/*
 		Boolean log = (Boolean)((HttpServletRequest)request).getSession().getAttribute("login");
 		String requestURI = ((HttpServletRequest)request).getRequestURI();
 		long before = System.currentTimeMillis();
-		if(requestURI.contains("/login") || requestURI.contains("/api") || requestURI.contains("/Images") || requestURI.contains("/css") || (log != null && log)) {
+		if(requestURI.contains("/login") || requestURI.contains("/api") || requestURI.contains("/Images") || requestURI.contains("/css") || (log != null && log)) {*/
 			chain.doFilter(request, response);
-		}
+		/*}
 		else{
 			((HttpServletResponse)response).sendRedirect(((HttpServletRequest)request).getContextPath()+"/login");
 		}
@@ -44,7 +40,7 @@ public class LoginFilter implements Filter {
 			}
 		}
 		list.put(requestURI, (int) (after-before));
-		((HttpServletRequest)request).getServletContext().setAttribute("time_servlet", list);
+		((HttpServletRequest)request).getServletContext().setAttribute("time_servlet", list);*/
 	}
 
 	@Override

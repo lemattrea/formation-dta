@@ -1,21 +1,20 @@
 package fr.pizzeria.doa;
 
-import org.apache.commons.lang3.NotImplementedException;
-
 import fr.pizzeria.doa.client.IClientDao;
 import fr.pizzeria.doa.commande.ICommandeDao;
 import fr.pizzeria.doa.pizza.IPizzaDao;
+import fr.pizzeria.doa.pizza.PizzaDaoImplBdd;
+import fr.pizzeria.exception.NotImplementException;
 
 public class DaoFactoryBdd implements DaoFactory {
 
 	private IPizzaDao pizzaDao;
-	private IClientDao clientDao;
 	
 	/**
 	 * 
 	 */
 	public DaoFactoryBdd (String driver, String url, String user, String password) throws ClassNotFoundException{
-		throw new NotImplementedException("fonction non implémenté");
+		this.pizzaDao = new PizzaDaoImplBdd(driver, url, user, password);
 	}
 
 	@Override
@@ -25,12 +24,12 @@ public class DaoFactoryBdd implements DaoFactory {
 
 	@Override
 	public IClientDao getClientDao() {
-		return clientDao;
+		throw new NotImplementException("Veuillez configurer l'application avec une implémentation base de données");
 	}
 
 	@Override
 	public ICommandeDao getCommandeDao() {
-		return null;
+		throw new NotImplementException("Veuillez configurer l'application avec une implémentation base de données");
 	}
 
 }
