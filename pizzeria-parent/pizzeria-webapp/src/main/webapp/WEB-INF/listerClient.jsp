@@ -80,6 +80,15 @@
 							class="form-control input-md" required>
 					</div>
 				</div>
+				
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="prenom">Mot de passe</label>
+					<div class="col-md-4">
+						<input id="pwd" name="pwd" type="password" placeholder=""
+							class="form-control input-md" required>
+					</div>
+				</div>
 
 				<!-- Select Basic -->
 				<div class="form-group">
@@ -118,15 +127,10 @@
 			var jSon = '{';
 			jSon += '"nom":"'+$("#nom").val()+'",';
 			jSon += '"prenom":"'+$("#prenom").val()+'",';
-			jSon += '"email":"'+$("#email").val()+'",';
-			alert( $("#nom").val() );
+			jSon += '"email":"'+$("#email").val()+'"';
+			jSon += '}';
+			alert( jSon );
 		});
-		{
-		    "code": "PIP",
-		    "nom": "La Reine",
-		    "prix": 12.1,
-		    "categorie": "VIANDE"
-		  }
 	</script>
 </div>
 

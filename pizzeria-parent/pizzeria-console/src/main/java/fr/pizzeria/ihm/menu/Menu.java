@@ -5,6 +5,9 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.doa.DaoFactory;
 import fr.pizzeria.ihm.menu.option.AbstractOptionMenu;
 import fr.pizzeria.ihm.menu.option.ImportPizzaOptionMenu;
@@ -16,11 +19,13 @@ import fr.pizzeria.ihm.menu.option.NouvellePizzaOptionMenu;
 import fr.pizzeria.ihm.menu.option.QuitterOptionMenu;
 import fr.pizzeria.ihm.menu.option.SupprimerPizzaOptionMenu;
 
+@Component
 public class Menu {
 	private static final String PIZZERIA_ADMINISTRATION_LIBELLE = "Pizzeria Administration";
 	public Map<Integer,AbstractOptionMenu> options = new TreeMap<Integer,AbstractOptionMenu>();
 	private Scanner sc;
-
+	
+	@Autowired
 	public Menu(Scanner sc,DaoFactory factoryDao) {
 		super();
 		this.sc = sc;

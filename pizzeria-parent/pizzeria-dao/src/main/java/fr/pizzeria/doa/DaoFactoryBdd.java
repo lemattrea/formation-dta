@@ -24,12 +24,12 @@ public class DaoFactoryBdd implements DaoFactory {
 
 	@Override
 	public IClientDao getClientDao() {
-		throw new NotImplementException("Veuillez configurer l'application avec une implémentation base de données");
+		throw new NotImplementException("Not Implément");
 	}
 
 	@Override
 	public ICommandeDao getCommandeDao() {
-		throw new NotImplementException("Veuillez configurer l'application avec une implémentation base de données");
+		throw new NotImplementException("Not Implément");
 	}
 
 }
