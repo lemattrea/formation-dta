@@ -22,7 +22,7 @@ import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-public class PizzaDaoImplMemoryTest {
+public class PizzaDaoImplMemoireTest {
 	
 	private Set<Pizza> pizzasRef;
 	private PizzaDaoImplMemory pizzaDaoRef;

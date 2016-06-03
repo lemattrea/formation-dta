@@ -2,15 +2,19 @@ pizzeria-console/target/
 pizzeria-webapp/target/
 pizzeria-dao/target/
 pizzeria-model/target/
+pizzeria-spring-web/target/
 pizzeria-console/.classpath
 pizzeria-webapp/.classpath
 pizzeria-dao/.classpath
 pizzeria-model/.classpath
+pizzeria-spring-web/.classpath
 pizzeria-console/.project
 pizzeria-webapp/.project
+pizzeria-spring-web/.project
 pizzeria-dao/.project
 pizzeria-model/.project
 pizzeria-console/.settings/
+pizzeria-spring-web/.settings/
 pizzeria-webapp/.settings/
 pizzeria-dao/.settings/
 pizzeria-model/.settings/
@@ -21,3 +25,4 @@ pizzeria-console/.gitignore
 pizzeria-webapp/.gitignore
 pizzeria-dao/.gitignore
 pizzeria-model/.gitignore
+pizzeria-spring-web/.gitignore

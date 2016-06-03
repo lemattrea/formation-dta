@@ -33,4 +33,22 @@ public class DaoFactoryFile implements DaoFactory {
 		return null;
 	}
 
+	@Override
+	public void setPizzaDao(IPizzaDao pizza) {
+		this.pizzaDao = pizza;
+		
+	}
+
+	@Override
+	public void setClientDao(IClientDao client) {
+		this.clientDao = client;
+		
+	}
+
+	@Override
+	public void setCommandeDao(ICommandeDao commande) {
+		throw new NotImplementedException("fonction non implémenté");
+		
+	}
+
 }

@@ -1,5 +1,8 @@
 package fr.pizzeria.doa;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.apache.commons.lang3.NotImplementedException;
 
 import fr.pizzeria.doa.client.IClientDao;
@@ -8,13 +11,14 @@ import fr.pizzeria.doa.pizza.IPizzaDao;
 import fr.pizzeria.doa.pizza.PizzaDaoImplMemory;
 
 public class DaoFactoryMemoire implements DaoFactory {
-
+	private static final Logger LOG = Logger.getLogger(DaoFactoryMemoire.class.toString());
 	private IPizzaDao pizzaDao;
 	
 	/**
 	 * 
 	 */
 	public DaoFactoryMemoire() {
+		LOG.log(Level.INFO, "Implémentation Memoire");
 		this.pizzaDao = new PizzaDaoImplMemory();
 	}
 
@@ -31,6 +35,24 @@ public class DaoFactoryMemoire implements DaoFactory {
 	@Override
 	public ICommandeDao getCommandeDao() {
 		throw new NotImplementedException("fonction non implémenté");
+	}
+
+	@Override
+	public void setPizzaDao(IPizzaDao pizza) {
+		this.pizzaDao = pizza;
+		
+	}
+
+	@Override
+	public void setClientDao(IClientDao client) {
+		throw new NotImplementedException("fonction non implémenté");
+		
+	}
+
+	@Override
+	public void setCommandeDao(ICommandeDao commande) {
+		throw new NotImplementedException("fonction non implémenté");
+		
 	}
 
 }

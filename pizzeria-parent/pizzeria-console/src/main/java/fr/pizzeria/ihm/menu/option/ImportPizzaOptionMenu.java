@@ -1,9 +1,8 @@
 package fr.pizzeria.ihm.menu.option;
 
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
-import org.apache.commons.collections4.ListUtils;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import fr.pizzeria.doa.DaoFactory;
 import fr.pizzeria.doa.pizza.IPizzaDao;
@@ -14,7 +13,8 @@ import fr.pizzeria.model.Pizza;
 public class ImportPizzaOptionMenu extends AbstractOptionMenu {
 
 	private static final String IMPORT_PIZZA_LIBELLE = "(Base de données) Importer les données";
-	
+	private static final Logger LOG = Logger.getLogger(ImportPizzaOptionMenu.class.toString());
+
 	public ImportPizzaOptionMenu(DaoFactory daoFactory) {
 		super(IMPORT_PIZZA_LIBELLE, daoFactory);
 	}
@@ -22,28 +22,18 @@ public class ImportPizzaOptionMenu extends AbstractOptionMenu {
 	@Override
 	public boolean execute() {
 		int compteur = 0;
-		boolean ope;
-		
 		IPizzaDao pizzaDao = factoryDao.getPizzaDao();
 		// creation d'un dao fichier pour récupérer tout les fichiers
 		IPizzaDao daoFichier = new PizzaDaoImplFile();
 		Set<Pizza> pizza = daoFichier.findAllPizzas();
-		
-		List<List<Pizza>> bestList = ListUtils.partition(pizza.stream().collect(Collectors.toList()), 3);
 
-		for(List<Pizza> p : bestList) {
-			try {
-				ope = pizzaDao.transactionInsertPizza(p);
-				if(ope) {
-					compteur += p.size();
-				}
-			}catch(NotImplementException e) {
-				System.out.println(e.getMessage());
-				return true;
-			}
+		try {
+			compteur = pizzaDao.fullTransaction(pizza);
+		} catch (NotImplementException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
+			return true;
 		}
-		System.out.println(compteur+" pizza ajouté");
-		
+		LOG.log(Level.INFO, "pizza créé:"+compteur);
 		return true;
 	}
 

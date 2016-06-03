@@ -8,4 +8,8 @@ public interface DaoFactory {
 	IPizzaDao getPizzaDao();
 	IClientDao getClientDao();
 	ICommandeDao getCommandeDao();
+	
+	void setPizzaDao(IPizzaDao pizza);
+	void setClientDao(IClientDao client);
+	void setCommandeDao(ICommandeDao commande);
 }

@@ -11,7 +11,7 @@ import fr.pizzeria.configuration.PizzeriaJpaSpringConfig;
 
 @Configuration
 @Import(PizzeriaJpaSpringConfig.class)
-@ComponentScan("fr.pizzeria.ihm")
+@ComponentScan("fr.pizzeria.ihm,fr.pizzeria.aspects,fr.pizzeria.doa.mapper")
 public class PizzeriaAppSpringConfig {
 	
 	@Bean

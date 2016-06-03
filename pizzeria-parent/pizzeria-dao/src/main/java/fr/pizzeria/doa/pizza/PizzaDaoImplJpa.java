@@ -54,7 +54,7 @@ public class PizzaDaoImplJpa implements IPizzaDao {
 		
 		// début de la transaction
 		trans.begin();
-		TypedQuery<Pizza> query = emCourant.createQuery("select h from Hotel h where h.code=:codePizza", Pizza.class);
+		TypedQuery<Pizza> query = emCourant.createQuery("select p from Pizza p where p.id=:codePizza", Pizza.class);
 		query.setParameter("codePizza", code);
 
 		Pizza pizza = query.getSingleResult();

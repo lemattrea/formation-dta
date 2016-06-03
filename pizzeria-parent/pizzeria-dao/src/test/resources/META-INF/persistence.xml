@@ -8,12 +8,11 @@
 		<class>fr.pizzeria.model.Commande</class>
 		<class>fr.pizzeria.model.Livreur</class>
 		<class>fr.pizzeria.model.Client</class>
-		<class>fr.pizzeria.model.Performance</class>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="${dao.bdd.url}"/>
-			<property name="javax.persistence.jdbc.user" value="${dao.bdd.user}"/>
-			<property name="javax.persistence.jdbc.password" value="${dao.bdd.pwd}"/>
-			<property name="javax.persistence.jdbc.driver" value="${dao.bdd.driver}"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:testdb"/>
+			<property name="javax.persistence.jdbc.user" value="sa"/>
+			<property name="javax.persistence.jdbc.password" value=""/>
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
 		</properties>
 	</persistence-unit>
 </persistence>

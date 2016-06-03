@@ -1,4 +1,4 @@
-package fr.pizzeria.configuration;
+package config;
 
 import javax.sql.DataSource;
 

@@ -12,6 +12,7 @@
 		<module>pizzeria-dao</module>
 		<module>pizzeria-console</module>
 		<module>pizzeria-webapp</module>
+		<module>pizzeria-spring-web</module>
 	</modules>
 	<profiles>
 
@@ -39,6 +40,8 @@
 		<jersey-client.version>1.18.1</jersey-client.version>
 		<jersey-json.version>1.18.1</jersey-json.version>
 		<spring.version>4.2.6.RELEASE</spring.version>
+		<spring-data.version>1.10.1.RELEASE</spring-data.version>
+		<jackson.version>2.7.4</jackson.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -130,6 +133,16 @@
 				<version>${spring.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-jpa</artifactId>
+				<version>${spring-data.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
